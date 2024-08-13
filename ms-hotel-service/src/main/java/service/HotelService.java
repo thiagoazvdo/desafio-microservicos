@@ -15,7 +15,7 @@ public class HotelService {
     private HotelRepository hotelRepository;
 
     public List<Hotel> searchHotels(HotelSearchCriteria criteria) {
-        return hotelRepository.findAll();
+        return hotelRepository.findByLocation(criteria.getDestination());
     }
 
     public Hotel saveHotel(Hotel hotel){
