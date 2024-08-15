@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: ms-hotel-service
+
+  datasource: #-Configuracoes do Banco de Dados
+    url: jdbc:mysql://localhost:3306/ms-hotel?createDatabaseIfNotExist=true&serverTimezone=UTC
+    username: root
+    password: root
+
+  flyway:
+    locations: classpath:db/migration #-Diretorio de scripts Flyway
+    enabled: true #-Habilita o Flyway para aplicar migracoes
+    baselineOnMigrate: true #-Adiciona e habilita a tabela de controle de historico de versoes do BD
+
+server:
+  port: 0  #-Define a porta do Microservico como aleatoria
+
+eureka:
+  instance: #-Definindo um nome unico para cada instancia (ms-hotel-service : nome-da-instancia)
+    instance-id: ${spring.application.name}:${spring-cloud.application.instance_id:${random.value}}
+  client:
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+
+
