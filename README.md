@@ -51,5 +51,5 @@ Diagrama inicial Microserviço de Notificacao (pendente):
 Diagrama do Microserviço de Comparacoes de Hotéis (pendente).
 
 ...
-
+A ideia seria implementar todos os microservicos com tratamento de excecao, testes, funcionalidades descritas no requisitos validadas, e fazer o deploy em containers docker. De toda forma gostei bastante do desafio proposto e pretendo desenvolver o restando independente do resultado. Desde ja agradeco o tempo e a oportunidade e me coloco a diposicao. 
 
