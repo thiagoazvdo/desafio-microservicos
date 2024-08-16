@@ -1,9 +1,9 @@
 package com.ntconsult.mshotelservice.controller;
 
 import com.ntconsult.mshotelservice.model.Hotel;
-import com.ntconsult.mshotelservice.model.HotelRequestDTO;
+import com.ntconsult.mshotelservice.DTO.HotelRequestDTO;
 import com.ntconsult.mshotelservice.model.Review;
-import com.ntconsult.mshotelservice.model.ReviewRequestDTO;
+import com.ntconsult.mshotelservice.DTO.ReviewRequestDTO;
 import com.ntconsult.mshotelservice.service.HotelService;
 import com.ntconsult.mshotelservice.service.ReviewService;
 import javax.validation.Valid;

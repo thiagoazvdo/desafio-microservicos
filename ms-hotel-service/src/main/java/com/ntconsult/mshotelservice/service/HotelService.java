@@ -2,7 +2,7 @@ package com.ntconsult.mshotelservice.service;
 
 import com.ntconsult.mshotelservice.exception.*;
 import com.ntconsult.mshotelservice.model.Hotel;
-import com.ntconsult.mshotelservice.model.HotelRequestDTO;
+import com.ntconsult.mshotelservice.DTO.HotelRequestDTO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

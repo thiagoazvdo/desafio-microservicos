@@ -4,7 +4,7 @@ import static org.mockito.Mockito.*;
 
 import com.ntconsult.mshotelservice.exception.*;
 import com.ntconsult.mshotelservice.model.Hotel;
-import com.ntconsult.mshotelservice.model.HotelRequestDTO;
+import com.ntconsult.mshotelservice.DTO.HotelRequestDTO;
 import com.ntconsult.mshotelservice.repository.HotelRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,7 +1,7 @@
 package com.ntconsult.mshotelservice.controller;
 
 import com.ntconsult.mshotelservice.model.Hotel;
-import com.ntconsult.mshotelservice.model.HotelRequestDTO;
+import com.ntconsult.mshotelservice.DTO.HotelRequestDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;

@@ -1,4 +1,4 @@
-package com.ntconsult.mshotelservice.model;
+package com.ntconsult.mshotelservice.DTO;
 
 
 import lombok.Getter;
