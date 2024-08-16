@@ -1,7 +1,11 @@
 package com.ntconsult.msreservationservice.exception;
 
-public class ReservationNotFoundException extends RuntimeException {
-  public ReservationNotFoundException(String message) {
-    super(message);
+import org.springframework.http.HttpStatus;
+
+public class ReservationNotFoundException extends ReservationException {
+
+  public ReservationNotFoundException() {
+    super("We could not find a reservation with the provided information!");
+    this.httpStatus = HttpStatus.NOT_FOUND;
   }
 }

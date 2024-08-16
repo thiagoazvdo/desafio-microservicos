@@ -1,17 +1,25 @@
-package model;
+package com.ntconsult.msreservationservice.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@NoArgsConstructor
-@AllArgsConstructor
+import javax.persistence.*;
+import java.util.List;
+
 @Getter
 @Setter
+@Entity
+@Table(name="Hotels")
 public class Hotel {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
+
+    @OneToMany(mappedBy = "hotel")
+    private List<Reservation> reservations;
+
+
 }

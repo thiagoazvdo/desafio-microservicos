@@ -1,4 +1,4 @@
-package model;
+package com.ntconsult.msreservationservice.model;
 
 import javax.persistence.*;
 import java.util.List;

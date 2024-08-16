@@ -1,9 +1,11 @@
-package model;
+package com.ntconsult.msreservationservice.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -15,7 +17,8 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String paymentData;
+    @CreationTimestamp
+    private LocalDate paymentData;
 
     private Double amount;
 

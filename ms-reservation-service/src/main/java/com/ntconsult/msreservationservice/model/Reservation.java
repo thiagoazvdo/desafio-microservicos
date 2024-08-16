@@ -1,4 +1,4 @@
-package model;
+package com.ntconsult.msreservationservice.model;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -19,10 +19,14 @@ public class Reservation {
 
     private String checkInDate;
 
-    private String checkoutDate;
+    private String checkOutDate;
 
     @ManyToOne
     @JoinColumn(name= "hotel_id")
     private Hotel hotel;
+
+    @ManyToOne
+    @JoinColumn(name= "customer_id")
+    private Customer customer;
 
 }
