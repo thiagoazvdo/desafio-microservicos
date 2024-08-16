@@ -15,7 +15,7 @@ public class ComparisonController {
     private ComparisonService comparisonService;
 
     @PostMapping
-    public List<ComparisonService> compareHotels(@RequestBody List<Long> hotelIds){
+    public List<Hotel> compareHotels(@RequestBody List<Long> hotelIds){
         return comparisonService.compareHotels(hotelIds);
     }
 
