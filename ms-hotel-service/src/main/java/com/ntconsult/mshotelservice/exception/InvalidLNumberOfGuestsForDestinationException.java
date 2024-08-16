@@ -4,7 +4,7 @@ import org.springframework.http.HttpStatus;
 
 public class InvalidLNumberOfGuestsForDestinationException extends HotelException {
     public InvalidLNumberOfGuestsForDestinationException() {
-        super("Nao existem hoteis cadastrados que suportem essa quantidade de hospedes no destino informado! Por favor informe uma outra localizacao ou altere o numero de hospedes.");
+        super("No hotels are registered that can accommodate the number of guests at the provided destination! Please provide a different location or adjust the number of guests.");
         this.httpStatus = HttpStatus.NOT_FOUND;
     }
 }

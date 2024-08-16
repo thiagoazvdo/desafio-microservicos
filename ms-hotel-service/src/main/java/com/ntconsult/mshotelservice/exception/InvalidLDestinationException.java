@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 public class InvalidLDestinationException extends HotelException {
 
     public InvalidLDestinationException() {
-        super("Nao existem hoteis cadastrados com o destino informado! Por favor informe uma outra localizacao.");
+        super("No hotels are registered with the provided destination! Please provide a different location.");
         this.httpStatus = HttpStatus.NOT_FOUND;
     }
 }

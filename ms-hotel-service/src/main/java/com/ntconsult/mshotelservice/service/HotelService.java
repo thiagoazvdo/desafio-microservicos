@@ -5,7 +5,6 @@ import com.ntconsult.mshotelservice.model.Hotel;
 import com.ntconsult.mshotelservice.model.HotelRequestDTO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import com.ntconsult.mshotelservice.repository.HotelRepository;
 
@@ -59,7 +58,7 @@ public class HotelService {
         return hotelRepository.save(hotel);
     }
 
-    private Hotel searchHotel(Long hotelId) {
+    public Hotel searchHotel(Long hotelId) {
             return hotelRepository.findById(hotelId).orElseThrow(HotelNotFoundException::new);
     }
 

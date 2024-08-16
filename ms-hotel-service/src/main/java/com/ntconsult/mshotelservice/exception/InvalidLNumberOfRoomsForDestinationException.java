@@ -4,7 +4,7 @@ import org.springframework.http.HttpStatus;
 
 public class InvalidLNumberOfRoomsForDestinationException extends HotelException {
     public InvalidLNumberOfRoomsForDestinationException() {
-        super("Nao existem hoteis com a quantidade de quartos no destino informado! Por favor informe uma outra localizacao ou altere o numero de quartos.");
+        super("No hotels are registered with the specified number of rooms at the provided destination! Please provide a different location or adjust the number of rooms.");
         this.httpStatus = HttpStatus.NOT_FOUND;
     }
 }

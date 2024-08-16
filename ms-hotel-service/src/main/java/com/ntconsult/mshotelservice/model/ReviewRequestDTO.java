@@ -1,24 +1,25 @@
 package com.ntconsult.mshotelservice.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.Getter;
+import lombok.Setter;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+@Getter
+@Setter
 public class ReviewRequestDTO {
 
-    @NotBlank
+    @NotBlank(message= "Reviewer name is required.")
     private String reviewerName;
 
-    @NotBlank
+    @NotBlank(message = "Comment is required.")
     private String comment;
 
-    @NotNull
+    @NotNull(message = "Rating is required.")
     private Double rating;
 
-    @NotBlank
-    private Hotel hotel;
+    @NotNull(message = "Hotel ID is required.")
+    private Long hotelId;
 
 }

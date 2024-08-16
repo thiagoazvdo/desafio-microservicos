@@ -12,6 +12,10 @@ spring:
     enabled: true #-Habilita o Flyway para aplicar migracoes
     baselineOnMigrate: true #-Adiciona e habilita a tabela de controle de historico de versoes do BD
 
+  messages:
+    basename: messages
+    encoding: UTF-8
+
 server:
   port: 0  #-Define a porta do Microservico como aleatoria
 

@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 public class AlreadyRegisteredException extends HotelException {
 
     public AlreadyRegisteredException() {
-        super("Ja existe um hotel cadastrado com o Cnpj informado! Por favor verifique o cnpj informado");
+        super("A hotel with the provided CNPJ is already registered! Please check the provided CNPJ.");
         this.httpStatus = HttpStatus.CONFLICT;
     }
 }

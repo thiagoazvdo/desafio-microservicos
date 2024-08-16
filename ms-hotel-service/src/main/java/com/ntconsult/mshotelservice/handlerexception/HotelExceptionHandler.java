@@ -5,13 +5,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.dao.DataAccessResourceFailureException;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.CannotCreateTransactionException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,8 +23,8 @@ import java.util.stream.Collectors;
  * param hotelException
  * return ResponseEntity
  */
-
-public class ServiceExceptionHandler extends ResponseEntityExceptionHandler {
+@ControllerAdvice
+public class HotelExceptionHandler {
 
     @Autowired
     private MessageSource messageSource;
@@ -40,27 +41,29 @@ public class ServiceExceptionHandler extends ResponseEntityExceptionHandler {
 
         List<String> problems = bindingResult.getFieldErrors().stream()
                 .map(fieldError -> {
-                    return messageSource.getMessage(fieldError, LocaleContextHolder.getLocale());
+                    String fieldName = fieldError.getField();
+                    String message = messageSource.getMessage(fieldError, LocaleContextHolder.getLocale());
+                    return String.format("Field '%s': %s",fieldName,message);
                 })
                 .collect(Collectors.toList());
 
-        Problem problem = new Problem("Problemas de validacao encontrados", problems);
+        Problem problem = new Problem("Validation problems found", problems);
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(problem);
     }
 
+
     @ExceptionHandler(CannotCreateTransactionException.class)
     public ResponseEntity<?> dataBaseConnectionFailedException(CannotCreateTransactionException e) {
-        Problem problem = new Problem("Falha na conexao com o banco de dados. Tente novamente mais tarde.");
+        Problem problem = new Problem("Database connection failure. Please try again later.");
         return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(problem);
     }
 
     @ExceptionHandler(DataAccessResourceFailureException.class)
     public ResponseEntity<?> dataBaseConnectionFailedException(DataAccessResourceFailureException ex) {
-        Problem problem = new Problem("Falha na conexao com o banco de dados. Tente novamente mais tarde.");
+        Problem problem = new Problem("Database connection failure. Please try again later.");
         return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(problem);
 
     }
-
 
 }

@@ -26,4 +26,6 @@ public interface HotelRepository extends JpaRepository<Hotel, Long> {
     List<Hotel> findByNumberOfGuestsAndDestination(@Param("numberOfGuests") int numberOfGuests, @Param("destination") String destination);
 
     boolean existsByCnpj(String cnpj);
+
+    Hotel findByCnpj(String cnpj);
 }
