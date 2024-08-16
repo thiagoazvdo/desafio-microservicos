@@ -1,7 +1,9 @@
 package controller;
 
 import model.Notification;
+import model.ReservationDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,5 +21,12 @@ public class NotificationController {
     public Notification sendNotification(@RequestBody Notification notification) {
         return notificationService.sendNotification(notification);
     }
+
+    @PostMapping("/reservation")
+    public ResponseEntity<String> notifyReservation(@RequestBody ReservationDTO reservation) {
+        notificationService.notifyReservation(reservation);
+        return ResponseEntity.ok("Notification sent successfully.");
+    }
+
 
 }

@@ -1,9 +1,12 @@
 package service;
 
 import model.Notification;
+import model.ReservationDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repository.NotificationRepository;
+
+import static model.NotificationType.EMAIL;
 
 @Service
 public class NotificationService {
@@ -15,13 +18,15 @@ public class NotificationService {
         return notificationRepository.save(notification);
     }
 
-    public void notifyReservation(Reservation reservation){
+    public void notifyReservation(ReservationDTO reservation){
         Notification notification = new Notification();
         notification.setRecipient(reservation.getUserContact());
-        notification.setMessage("Sua reserva foi confirmada para o hotel" +
-                reservation.getHotel().getName()
-        + " de " + reservation.getCheckInDate()
-        + " até " + reservation.getCheckOutDate());
+        notification.setMessage("Your reservation was confirmed at the hotel " +
+                reservation.getHotelName() +
+                " from " + reservation.getCheckInDate() +
+                " to " + reservation.getCheckoutDate());
+        notification.setType(EMAIL);
+
         sendNotification(notification);
     }
 }

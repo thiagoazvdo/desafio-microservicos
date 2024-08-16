@@ -3,9 +3,9 @@ spring:
     name: ms-notification-service
 
   datasource: #-Configuracoes do Banco de Dados
-    url: jdbc:mysql://localhost:3307/ms-notification?createDatabaseIfNotExist=true&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/ms-notification?createDatabaseIfNotExist=true&serverTimezone=UTC
     username: root
-    password: root
+    password: koatay108
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   flyway:
