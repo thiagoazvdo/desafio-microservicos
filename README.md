@@ -36,13 +36,17 @@ A escolha da arquitetura de microservicos visa dividir o sistema em componentes 
 Outro ponto que prevaleceu na escolha da abordagem de microservicos foi a questao do isolamento, bastante util em cenarios complexos, mantendo o funcionamento dos demais servicos, aumentando a disponibilidade e facilitando a manutencao e atualizacao.
 
 Diagrama ER Microserviço de Hotéis (pendente):
+
 <img width="576" alt="Captura de Tela 2024-08-15 às 18 32 17" src="https://github.com/user-attachments/assets/12f113a9-ac91-4ff6-a60c-ae348f1c1cbc">
 
 Diagrama ER Microserviço de Reservas (pendente):
+
 ![image](https://github.com/user-attachments/assets/61b133be-5f73-4da4-9295-b1f1194c50f8)
 
 Diagrama inicial Microserviço de Notificacao (pendente):
+
 ![image](https://github.com/user-attachments/assets/bd6eed58-69f5-41b3-b945-64364dbd7131)
+
 
 Diagrama do Microserviço de Comparacoes de Hotéis (pendente).
 
