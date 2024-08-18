@@ -3,6 +3,7 @@ package com.ntconsult.mshotelservice.service;
 import com.ntconsult.mshotelservice.exception.*;
 import com.ntconsult.mshotelservice.model.Hotel;
 import com.ntconsult.mshotelservice.DTO.HotelRequestDTO;
+import org.slf4j.Logger;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,8 @@ import java.util.List;
 @Service
 public class HotelService {
 
+    //    Logger
+
     @Autowired
     private HotelRepository hotelRepository;
 
@@ -22,25 +25,25 @@ public class HotelService {
     }
 
     public List<Hotel> findHotelsByDestination(String destination) {
-        List<Hotel> hotels = hotelRepository.findByDestination(destination);
+        List<Hotel> hotels = hotelRepository.findByDestinationContainingIgnoreCase(destination);
         if (hotels.isEmpty()) throw new InvalidLDestinationException();
         return hotels;
     }
 
     public List<Hotel> findHotelsByDatesAndDestination(LocalDate checkInDate, LocalDate checkOutDate, String destination) {
-        List<Hotel> hotels = hotelRepository.findByCheckInDateAndCheckOutDateAndDestination(checkInDate, checkOutDate, destination);
+        List<Hotel> hotels = hotelRepository.findByCheckInDateLessThanEqualAndCheckOutDateGreaterThanEqualAndDestination(checkInDate, checkOutDate, destination);
         if (hotels.isEmpty()) throw new UnavaliableHotelsException();
         return hotels;
     }
 
     public List<Hotel> findHotelsByNumberOfRoomsAndDestination(int numberOfRooms, String destination) {
-        List<Hotel> hotels = hotelRepository.findByNumberOfRoomsAndDestination(numberOfRooms, destination);
+        List<Hotel> hotels = hotelRepository.findByNumberOfRoomsGreaterThanEqualAndDestination(numberOfRooms, destination);
         if (hotels.isEmpty()) throw new InvalidLNumberOfRoomsForDestinationException();
         return hotels;
     }
 
     public List<Hotel> findHotelsByNumberOfGuestsAndDestination(int numberOfGuests, String destination) {
-        List<Hotel> hotels = hotelRepository.findByNumberOfGuestsAndDestination(numberOfGuests, destination);
+        List<Hotel> hotels = hotelRepository.findByNumberOfGuestsGreaterThanEqualAndDestination(numberOfGuests, destination);
         if(hotels.isEmpty()) throw new InvalidLNumberOfGuestsForDestinationException();
         return hotels;
     }

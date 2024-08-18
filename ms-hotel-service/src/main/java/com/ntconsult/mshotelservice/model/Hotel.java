@@ -28,11 +28,11 @@ public class Hotel {
     private BigDecimal pricePerNight;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "hotel")
+    @OneToMany(mappedBy = "hotel", fetch = FetchType.LAZY)
     private List<Room> rooms;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "hotel")
+    @OneToMany(mappedBy = "hotel", fetch = FetchType.LAZY)
     private List<Review> reviews;
 
     private String destination;

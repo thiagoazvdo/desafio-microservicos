@@ -1,16 +1,13 @@
 package com.ntconsult.mshotelservice.controller;
 
 import com.ntconsult.mshotelservice.model.Hotel;
-import com.ntconsult.mshotelservice.DTO.HotelRequestDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.ntconsult.mshotelservice.repository.HotelRepository;
 import com.ntconsult.mshotelservice.service.HotelService;
 
-import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -39,7 +36,7 @@ public class HotelController {
         return ResponseEntity.ok(hotels);
     }
 
-    @GetMapping("/search/rooms-and-destination")
+    @GetMapping("/search/numberofrooms-and-destination")
     public ResponseEntity<List<Hotel>> searchByNumberOfRoomsAndDestination(@RequestParam int numberOfRooms, @RequestParam String destination) {
         List<Hotel> hotels = hotelService.findHotelsByNumberOfRoomsAndDestination(numberOfRooms, destination);
         return ResponseEntity.ok(hotels);
@@ -56,24 +53,5 @@ public class HotelController {
         List<Hotel> listaHoteis = hotelService.findHotels();
         return ResponseEntity.ok(listaHoteis);
     }
-
-    @PostMapping
-    public ResponseEntity<Hotel> addHotel(@Valid @RequestBody HotelRequestDTO hotelDTO){
-        Hotel hotel = hotelService.createHotel(hotelDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(hotel);
-    }
-
-    @PutMapping("/{hotelId}")
-    public ResponseEntity<Hotel> updateHotel(@PathVariable Long hotelId, @Valid @RequestBody HotelRequestDTO hotelDTO){
-        Hotel hotel = hotelService.updateHotel(hotelId,hotelDTO);
-        return ResponseEntity.ok(hotel);
-    }
-
-    @DeleteMapping("/{hotelId}")
-    public ResponseEntity<Hotel> deleteHotel(@PathVariable Long hotelId){
-        hotelService.deleteHotel(hotelId);
-        return ResponseEntity.noContent().build();
-    }
-
 
 }

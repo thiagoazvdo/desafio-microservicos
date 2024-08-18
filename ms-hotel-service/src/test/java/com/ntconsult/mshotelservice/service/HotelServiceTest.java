@@ -49,7 +49,7 @@ public class HotelServiceTest {
         String destination = "Paris";
         Hotel hotel = new Hotel();
         hotel.setDestination(destination);
-        when(hotelRepository.findByDestination(destination)).thenReturn(Collections.singletonList(hotel));
+        when(hotelRepository.findByDestinationContainingIgnoreCase(destination)).thenReturn(Collections.singletonList(hotel));
 
         // Act
         List<Hotel> hotels = hotelService.findHotelsByDestination(destination);
@@ -63,7 +63,7 @@ public class HotelServiceTest {
     void testFindHotelsByDestination_EmptyList() {
         // Arrange
         String destination = "Paris";
-        when(hotelRepository.findByDestination(destination)).thenReturn(Collections.emptyList());
+        when(hotelRepository.findByDestinationContainingIgnoreCase(destination)).thenReturn(Collections.emptyList());
 
         // Act & Assert
         assertThrows(InvalidLDestinationException.class, () -> hotelService.findHotelsByDestination(destination));
@@ -77,7 +77,7 @@ public class HotelServiceTest {
         String destination = "Paris";
         Hotel hotel = new Hotel();
         hotel.setDestination(destination);
-        when(hotelRepository.findByCheckInDateAndCheckOutDateAndDestination(checkInDate, checkOutDate, destination))
+        when(hotelRepository.findByCheckInDateLessThanEqualAndCheckOutDateGreaterThanEqualAndDestination(checkInDate, checkOutDate, destination))
                 .thenReturn(Collections.singletonList(hotel));
 
         // Act
@@ -93,7 +93,7 @@ public class HotelServiceTest {
         LocalDate checkInDate = LocalDate.of(2024, 8, 1);
         LocalDate checkOutDate = LocalDate.of(2024, 8, 7);
         String destination = "Paris";
-        when(hotelRepository.findByCheckInDateAndCheckOutDateAndDestination(checkInDate, checkOutDate, destination))
+        when(hotelRepository.findByCheckInDateLessThanEqualAndCheckOutDateGreaterThanEqualAndDestination(checkInDate, checkOutDate, destination))
                 .thenReturn(Collections.emptyList());
 
         // Act & Assert
@@ -107,7 +107,7 @@ public class HotelServiceTest {
         String destination = "Paris";
         Hotel hotel = new Hotel();
         hotel.setDestination(destination);
-        when(hotelRepository.findByNumberOfRoomsAndDestination(numberOfRooms, destination))
+        when(hotelRepository.findByNumberOfRoomsGreaterThanEqualAndDestination(numberOfRooms, destination))
                 .thenReturn(Collections.singletonList(hotel));
 
         // Act
@@ -122,7 +122,7 @@ public class HotelServiceTest {
         // Arrange
         int numberOfRooms = 3;
         String destination = "Paris";
-        when(hotelRepository.findByNumberOfRoomsAndDestination(numberOfRooms, destination))
+        when(hotelRepository.findByNumberOfRoomsGreaterThanEqualAndDestination(numberOfRooms, destination))
                 .thenReturn(Collections.emptyList());
 
         // Act & Assert
@@ -136,7 +136,7 @@ public class HotelServiceTest {
         String destination = "Paris";
         Hotel hotel = new Hotel();
         hotel.setDestination(destination);
-        when(hotelRepository.findByNumberOfGuestsAndDestination(numberOfGuests, destination))
+        when(hotelRepository.findByNumberOfGuestsGreaterThanEqualAndDestination(numberOfGuests, destination))
                 .thenReturn(Collections.singletonList(hotel));
 
         // Act
@@ -151,7 +151,7 @@ public class HotelServiceTest {
         // Arrange
         int numberOfGuests = 4;
         String destination = "Paris";
-        when(hotelRepository.findByNumberOfGuestsAndDestination(numberOfGuests, destination))
+        when(hotelRepository.findByNumberOfGuestsGreaterThanEqualAndDestination(numberOfGuests, destination))
                 .thenReturn(Collections.emptyList());
 
         // Act & Assert

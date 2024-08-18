@@ -35,6 +35,9 @@ public class ReviewController {
         return ResponseEntity.ok(reviews);
     }
 
+    //implementar pelo nome do hotel
+    //mais bem avaliados
+
     @PostMapping
     public ResponseEntity<Review> createReview(@Valid @RequestBody ReviewRequestDTO reviewDTO) {
         Review newReview = reviewService.createReview(reviewDTO);
