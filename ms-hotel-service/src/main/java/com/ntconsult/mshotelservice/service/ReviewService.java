@@ -1,10 +1,10 @@
 package com.ntconsult.mshotelservice.service;
 
+import com.ntconsult.mshotelservice.DTO.HotelRequestDTO;
+import com.ntconsult.mshotelservice.DTO.ReviewRequestDTO;
 import com.ntconsult.mshotelservice.exception.HotelNotFoundException;
 import com.ntconsult.mshotelservice.model.Hotel;
-import com.ntconsult.mshotelservice.DTO.HotelRequestDTO;
 import com.ntconsult.mshotelservice.model.Review;
-import com.ntconsult.mshotelservice.DTO.ReviewRequestDTO;
 import com.ntconsult.mshotelservice.repository.HotelRepository;
 import com.ntconsult.mshotelservice.repository.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;

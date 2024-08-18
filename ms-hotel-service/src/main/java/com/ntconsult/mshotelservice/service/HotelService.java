@@ -1,13 +1,12 @@
 package com.ntconsult.mshotelservice.service;
 
+import com.ntconsult.mshotelservice.DTO.HotelRequestDTO;
 import com.ntconsult.mshotelservice.exception.*;
 import com.ntconsult.mshotelservice.model.Hotel;
-import com.ntconsult.mshotelservice.DTO.HotelRequestDTO;
-import org.slf4j.Logger;
+import com.ntconsult.mshotelservice.repository.HotelRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.ntconsult.mshotelservice.repository.HotelRepository;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -23,6 +22,8 @@ public class HotelService {
     public List<Hotel> findHotels(){
         return hotelRepository.findAll();
     }
+
+    public List<Hotel> findHotelsByName(String name) { return hotelRepository.findByNameLikeIgnoreCase(name); }
 
     public List<Hotel> findHotelsByDestination(String destination) {
         List<Hotel> hotels = hotelRepository.findByDestinationContainingIgnoreCase(destination);

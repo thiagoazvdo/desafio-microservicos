@@ -12,6 +12,8 @@ public interface HotelRepository extends JpaRepository<Hotel, Long> {
 
     List<Hotel> findByDestinationContainingIgnoreCase(String destination);
 
+    List<Hotel> findByNameLikeIgnoreCase(String name);
+
     List<Hotel> findByCheckInDateLessThanEqualAndCheckOutDateGreaterThanEqualAndDestination(
             LocalDate checkInDate, LocalDate checkOutDate, String destination);
 

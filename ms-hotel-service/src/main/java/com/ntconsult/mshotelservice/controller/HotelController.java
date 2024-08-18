@@ -1,12 +1,15 @@
 package com.ntconsult.mshotelservice.controller;
 
 import com.ntconsult.mshotelservice.model.Hotel;
+import com.ntconsult.mshotelservice.repository.HotelRepository;
+import com.ntconsult.mshotelservice.service.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import com.ntconsult.mshotelservice.repository.HotelRepository;
-import com.ntconsult.mshotelservice.service.HotelService;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -21,7 +24,13 @@ public class HotelController {
     @Autowired
     private HotelRepository hotelRepository;
 
-    @GetMapping("/search/destination")
+    @GetMapping("/search/by-name")
+    public ResponseEntity<List<Hotel>> findByName(@RequestParam String name) {
+        List<Hotel> hotels = hotelService.findHotelsByName(name);
+        return ResponseEntity.ok(hotels);
+    }
+
+    @GetMapping("/search/by-destination")
     public ResponseEntity<List<Hotel>> searchByDestination(@RequestParam String destination) {
         List<Hotel> hotels = hotelService.findHotelsByDestination(destination);
         return ResponseEntity.ok(hotels);
