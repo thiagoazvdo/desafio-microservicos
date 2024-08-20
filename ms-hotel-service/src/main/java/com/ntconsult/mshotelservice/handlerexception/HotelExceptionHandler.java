@@ -8,12 +8,15 @@ import org.springframework.dao.DataAccessResourceFailureException;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.transaction.CannotCreateTransactionException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,6 +40,7 @@ public class HotelExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Problem> onMethodArgumentNotValidException(MethodArgumentNotValidException e) {
+
         BindingResult bindingResult = e.getBindingResult();
 
         List<String> problems = bindingResult.getFieldErrors().stream()
@@ -52,6 +56,13 @@ public class HotelExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(problem);
     }
 
+    @ExceptionHandler(MissingServletRequestParameterException.class)
+    public ResponseEntity<Problem> handleMissingServletRequestParameterException(MissingServletRequestParameterException e) {
+        List<String> problems = List.of(String.format("Missing request parameter: %s", e.getParameterName()));
+
+        Problem problem = new Problem("Missing request parameter", problems);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(problem);
+    }
 
     @ExceptionHandler(CannotCreateTransactionException.class)
     public ResponseEntity<?> dataBaseConnectionFailedException(CannotCreateTransactionException e) {

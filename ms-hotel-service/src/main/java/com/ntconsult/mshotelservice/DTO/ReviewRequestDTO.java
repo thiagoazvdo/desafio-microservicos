@@ -10,16 +10,16 @@ import javax.validation.constraints.NotNull;
 @Setter
 public class ReviewRequestDTO {
 
-    @NotBlank(message= "Reviewer name is required.")
+    @NotBlank(message= "{notBlank.reviewRequestDTO.reviewerName}")
     private String reviewerName;
 
-    @NotBlank(message = "Comment is required.")
+    @NotBlank(message = "{notBlank.reviewRequestDTO.comment}")
     private String comment;
 
-    @NotNull(message = "Rating is required.")
+    @NotNull(message = "{notNull.reviewRequestDTO.rating}")
     private Double rating;
 
-    @NotNull(message = "Hotel ID is required.")
+    @NotNull(message = "{notNull.reviewRequestDTO.hotel}")
     private Long hotelId;
 
 }

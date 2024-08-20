@@ -1,7 +1,6 @@
 package com.ntconsult.mshotelservice.controller;
 
 import com.ntconsult.mshotelservice.model.Hotel;
-import com.ntconsult.mshotelservice.repository.HotelRepository;
 import com.ntconsult.mshotelservice.service.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -20,9 +19,6 @@ public class HotelController {
 
     @Autowired
     private HotelService hotelService;
-
-    @Autowired
-    private HotelRepository hotelRepository;
 
     @GetMapping("/search/by-name")
     public ResponseEntity<List<Hotel>> findByName(@RequestParam String name) {
@@ -59,8 +55,8 @@ public class HotelController {
 
     @GetMapping("/search")
     public ResponseEntity<List<Hotel>> searchHotels(){
-        List<Hotel> listaHoteis = hotelService.findHotels();
-        return ResponseEntity.ok(listaHoteis);
+        List<Hotel> listHotels = hotelService.findHotels();
+        return ResponseEntity.ok(listHotels);
     }
 
 }

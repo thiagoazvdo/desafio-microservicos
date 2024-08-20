@@ -1,4 +1,4 @@
-package model;
+package ntconsult.com.mscomparisonservice.model;
 
 import lombok.Getter;
 import lombok.Setter;

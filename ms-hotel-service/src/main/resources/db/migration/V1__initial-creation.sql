@@ -5,8 +5,8 @@ CREATE TABLE hotels (
                         cnpj VARCHAR(20) NOT NULL,
                         price_per_night DECIMAL(10, 2) NOT NULL,
                         destination VARCHAR(255) NOT NULL,
-                        check_in_date DATE NOT NULL,
-                        check_out_date DATE NOT NULL,
+                        occupied_check_in_date DATE NOT NULL,
+                        occupied_check_out_date DATE NOT NULL,
                         number_of_rooms INT NOT NULL,
                         number_of_guests INT NOT NULL
 );
@@ -29,3 +29,4 @@ CREATE TABLE reviewers (
    hotel_id BIGINT,
    FOREIGN KEY (hotel_id) REFERENCES hotels(id)
 );
+

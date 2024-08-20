@@ -1,5 +1,5 @@
 
-INSERT INTO hotels (name, cnpj, price_per_night, destination, check_in_date, check_out_date, number_of_rooms, number_of_guests)
+INSERT INTO hotels (name, cnpj, price_per_night, destination, occupied_check_in_date, occupied_check_out_date, number_of_rooms, number_of_guests)
 VALUES
     ('Hotel Lux', '12345678000195', 150.00, 'Paris', '2024-08-01', '2024-08-15', 20, 40),
     ('Hotel Comfort', '12345678000196', 180.00, 'New York', '2024-08-05', '2024-08-20', 15, 30),

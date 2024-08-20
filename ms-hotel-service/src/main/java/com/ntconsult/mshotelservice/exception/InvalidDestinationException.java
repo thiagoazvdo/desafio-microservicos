@@ -2,9 +2,9 @@ package com.ntconsult.mshotelservice.exception;
 
 import org.springframework.http.HttpStatus;
 
-public class InvalidLDestinationException extends HotelException {
+public class InvalidDestinationException extends HotelException {
 
-    public InvalidLDestinationException() {
+    public InvalidDestinationException() {
         super("No hotels are registered with the provided destination! Please provide a different location.");
         this.httpStatus = HttpStatus.NOT_FOUND;
     }

@@ -2,23 +2,28 @@ spring:
   application:
     name: ms-hotel-service
 
+  rabbitmq: #-Configuracoes de conexao com broker
+    host: localhost
+    port: 5672
+    username: admin
+    password: 123456
+
   datasource: #-Configuracoes do Banco de Dados
     url: jdbc:mysql://localhost:3306/ms-hotel?createDatabaseIfNotExist=true&serverTimezone=UTC
     username: root
     password: koatay108
-
 
   flyway:
     locations: classpath:db/migration #-Diretorio de scripts Flyway
     enabled: true #-Habilita o Flyway para aplicar migracoes
     baselineOnMigrate: true #-Adiciona e habilita a tabela de controle de historico de versoes do BD
 
-  messages:
+  messages: #-Configura o messages.properties
     basename: messages
     encoding: UTF-8
 
 server:
-  port: 0  #-Define a porta do Microservico como aleatoria
+  port: 8081
 
 eureka:
   instance: #-Definindo um nome unico para cada instancia (ms-hotel-service : nome-da-instancia)
@@ -28,5 +33,8 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka
 
+mq: #-Configuracoes de conexao com a fila
+  queue:
+    recieve-reservation: recieve-reservation
 
 

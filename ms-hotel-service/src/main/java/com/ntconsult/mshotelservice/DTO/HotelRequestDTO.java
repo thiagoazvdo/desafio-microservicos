@@ -1,6 +1,5 @@
 package com.ntconsult.mshotelservice.DTO;
 
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,28 +12,28 @@ import java.time.LocalDate;
 @Setter
 public class HotelRequestDTO {
 
-    @NotBlank
+    @NotBlank(message = "{notBlank.hotelRequestDTO.name}")
     private String name;
 
-    @NotBlank
+    @NotBlank(message = "{notBlank.hotelRequestDTO.cnpj}")
     private String cnpj;
 
-    @NotNull
+    @NotNull(message = "{notNull.hotelRequestDTO.pricePerNight}")
     private BigDecimal pricePerNight;
 
-    @NotBlank
+    @NotBlank(message = "{notBlank.hotelRequestDTO.destination}")
     private String destination;
 
-    @NotNull
+    @NotNull(message = "{notNull.hotelRequestDTO.checkInDate}")
     private LocalDate checkInDate;
 
-    @NotNull
+    @NotNull(message = "{notNull.hotelRequestDTO.checkOutDate}")
     private LocalDate checkOutDate;
 
-    @NotNull
+    @NotNull(message = "{notNull.hotelRequestDTO.numberOfRooms}")
     private int numberOfRooms;
 
-    @NotNull
+    @NotNull(message = "{notNull.hotelRequestDTO.numberOfGuests}")
     private int numberOfGuests;
 
 }

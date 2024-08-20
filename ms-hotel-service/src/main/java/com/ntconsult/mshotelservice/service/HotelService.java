@@ -14,8 +14,6 @@ import java.util.List;
 @Service
 public class HotelService {
 
-    //    Logger
-
     @Autowired
     private HotelRepository hotelRepository;
 
@@ -27,25 +25,25 @@ public class HotelService {
 
     public List<Hotel> findHotelsByDestination(String destination) {
         List<Hotel> hotels = hotelRepository.findByDestinationContainingIgnoreCase(destination);
-        if (hotels.isEmpty()) throw new InvalidLDestinationException();
+        if (hotels.isEmpty()) throw new InvalidDestinationException();
         return hotels;
     }
 
     public List<Hotel> findHotelsByDatesAndDestination(LocalDate checkInDate, LocalDate checkOutDate, String destination) {
-        List<Hotel> hotels = hotelRepository.findByCheckInDateLessThanEqualAndCheckOutDateGreaterThanEqualAndDestination(checkInDate, checkOutDate, destination);
+        List<Hotel> hotels = hotelRepository.findByOccupiedCheckInDateLessThanEqualAndOccupiedCheckOutDateGreaterThanEqualAndDestination(checkInDate, checkOutDate, destination);
         if (hotels.isEmpty()) throw new UnavaliableHotelsException();
         return hotels;
     }
 
     public List<Hotel> findHotelsByNumberOfRoomsAndDestination(int numberOfRooms, String destination) {
         List<Hotel> hotels = hotelRepository.findByNumberOfRoomsGreaterThanEqualAndDestination(numberOfRooms, destination);
-        if (hotels.isEmpty()) throw new InvalidLNumberOfRoomsForDestinationException();
+        if (hotels.isEmpty()) throw new InvalidNumberOfRoomsForDestinationException();
         return hotels;
     }
 
     public List<Hotel> findHotelsByNumberOfGuestsAndDestination(int numberOfGuests, String destination) {
         List<Hotel> hotels = hotelRepository.findByNumberOfGuestsGreaterThanEqualAndDestination(numberOfGuests, destination);
-        if(hotels.isEmpty()) throw new InvalidLNumberOfGuestsForDestinationException();
+        if(hotels.isEmpty()) throw new InvalidNumberOfGuestsForDestinationException();
         return hotels;
     }
 
@@ -75,3 +73,4 @@ public class HotelService {
     }
 
 }
+

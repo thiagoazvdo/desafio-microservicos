@@ -9,7 +9,6 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
-
 @Getter
 @Setter
 @Entity
@@ -36,9 +35,9 @@ public class Hotel {
 
     private String destination;
 
-    private LocalDate checkInDate;
+    private LocalDate occupiedCheckInDate;
 
-    private LocalDate checkOutDate;
+    private LocalDate occupiedCheckOutDate;
 
     private int numberOfRooms;
 
