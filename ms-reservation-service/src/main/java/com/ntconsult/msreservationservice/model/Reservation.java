@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -15,18 +16,21 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String reservationDate;
+    @Column(updatable = false)
+    private LocalDate reservationDate;
 
-    private String checkInDate;
+    private LocalDate checkInDate;
 
-    private String checkOutDate;
+    private LocalDate checkOutDate;
+
+    private int numberOfRooms;
 
     @ManyToOne
     @JoinColumn(name= "hotel_id")
     private Hotel hotel;
 
-    @ManyToOne
-    @JoinColumn(name= "customer_id")
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name= "customer_id", nullable = false)
     private Customer customer;
 
 }

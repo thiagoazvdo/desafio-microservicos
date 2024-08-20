@@ -1,12 +1,19 @@
 package com.ntconsult.msreservationservice.DTO;
 
-import lombok.Data;
+import lombok.*;
 
+import java.time.LocalDate;
+
+@Getter
+@Setter
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class ReservationResponseDTO {
     private Long id;
-    private String reservationDate;
-    private String checkInDate;
-    private String checkoutDate;
+    private LocalDate reservationDate;
+    private LocalDate checkInDate;
+    private LocalDate checkOutDate;
+    private int numberOfRooms;
     private HotelResponseDTO hotel;
 }

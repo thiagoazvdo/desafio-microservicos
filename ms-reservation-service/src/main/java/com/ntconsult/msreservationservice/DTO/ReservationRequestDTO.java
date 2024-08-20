@@ -1,12 +1,10 @@
 package com.ntconsult.msreservationservice.DTO;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.CreationTimestamp;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.Future;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Min;
+
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
@@ -14,25 +12,28 @@ import java.time.LocalDate;
 @Setter
 public class ReservationRequestDTO {
 
-    @NotNull(message = "Hotel ID is required to complete your reservation.")
+    @NotNull(message = "{notnull.reservationrequestdto.hotelid}")
     private Long hotelId;
 
-    @Future
+    @Future(message = "{future.reservationrequestdto.checkindate}")
+    @NotNull(message = "{notnull.reservationrequestdto.checkindate}")
     private LocalDate checkInDate;
 
-    @Future
+    @Future(message = "{future.reservationrequestdto.checkoutdate}")
+    @NotNull(message = "{notnull.reservationrequestdto.checkoutdate}")
     private LocalDate checkOutDate;
 
-    @CreationTimestamp
-    private String reservationDate;
+    @Future(message = "{future.reservationrequestdto.reservationdate}")
+    @NotNull(message = "{notnull.reservationrequestdto.reservationdate}")
+    private LocalDate reservationDate;
 
-    @NotBlank(message = "Customer name is required to complete your reservation")
-    private String customerName;
+    @NotNull(message = "{notnull.reservationrequestdto.customer}")
+    private CustomerRequestDTO customer;
 
-    @Email
-    @NotBlank(message = "Customer email is required to complete your reservation")
-    private String customerContact;
+    @Min(value = 1, message = "{min.reservationrequestdto.numberofrooms}")
+    @NotNull(message = "{notnull.reservationrequestdto.numberofrooms}")
+    private int numberOfRooms;
 
-    @NotNull
+    @NotNull(message = "{notnull.reservationrequestdto.payment}")
     private PaymentRequestDTO payment;
 }

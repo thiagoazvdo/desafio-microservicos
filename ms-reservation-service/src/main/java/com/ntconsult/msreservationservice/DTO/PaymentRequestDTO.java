@@ -1,9 +1,7 @@
 package com.ntconsult.msreservationservice.DTO;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.CreationTimestamp;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -13,13 +11,12 @@ import java.time.LocalDate;
 @Setter
 public class PaymentRequestDTO {
 
-//    @CreationTimestamp
-    @NotNull(message = "Date is required")
+    @NotNull(message = "{notNull.paymentRequestDTO.paymentData}")
     private LocalDate paymentData;
 
-    @NotNull(message = "Amount is required")
+    @NotNull(message = "{notNull.paymentRequestDTO.amount}")
     private Double amount;
 
-    @NotBlank(message = "Payment status is required")
+    @NotBlank(message = "{notBlank.paymentRequestDTO.paymentStatus}")
     private String paymentStatus;
 }

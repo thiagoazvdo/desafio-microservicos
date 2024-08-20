@@ -1,7 +1,7 @@
 package com.ntconsult.msreservationservice.exception.rabbitmq;
 
-public class ErrorSendReservationQueue extends RuntimeException {
-    public ErrorSendReservationQueue(String message) {
+public class ErrorSendReservationQueueException extends RuntimeException {
+    public ErrorSendReservationQueueException(String message) {
         super(message);
     }
 }
