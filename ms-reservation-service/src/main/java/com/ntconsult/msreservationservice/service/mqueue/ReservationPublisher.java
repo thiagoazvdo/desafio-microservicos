@@ -10,17 +10,18 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-@Component
 @RequiredArgsConstructor
+@Component
 public class ReservationPublisher {
 
     @Autowired
     private final RabbitTemplate rabbitTemplate;
 
+    @Qualifier("queueReservationPublisher")
     private final Queue queueReservation;
-
 
     public void publishReservation(DataReservation dataReservation) throws JsonProcessingException {
         var json = convertIntoJson(dataReservation);

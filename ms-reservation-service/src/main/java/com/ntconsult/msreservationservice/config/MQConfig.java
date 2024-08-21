@@ -8,11 +8,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class MQConfig {
 
-    @Value("${mq.queues.recieve-reservation}")
-    private String recieveReservation;
+    @Value("${mq.queues.receive-reservation}")
+    private String receiveReservation;
 
     @Bean
     public Queue queueReservationPublisher(){
-        return new Queue(recieveReservation, true);
+        return new Queue(receiveReservation, true);
     }
+
 }

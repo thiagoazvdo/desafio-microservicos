@@ -1,6 +1,6 @@
-package service;
+package ntconsult.com.mscomparisonservice.service;
 
-import model.Hotel;
+import ntconsult.com.mscomparisonservice.model.Hotel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;

@@ -31,4 +31,4 @@ eureka:
 
 mq:
   queues:
-    recieve-reservation: recieve-resertation
+    receive-reservation: receive-resertation

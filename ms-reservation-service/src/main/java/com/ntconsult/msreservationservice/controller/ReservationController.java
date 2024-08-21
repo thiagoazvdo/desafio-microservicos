@@ -28,27 +28,11 @@ public class ReservationController {
         return ResponseEntity.ok(listReservations);
     }
 
-//    @PostMapping
-//    public ResponseEntity<ReservationResponseDTO> createReservation(@RequestBody @Valid ReservationRequestDTO reservationDTO) {
-//        ReservationResponseDTO responseDTO = reservationService.createReservation(reservationDTO);
-//        return ResponseEntity.status(HttpStatus.CREATED).body(responseDTO);
-//    }
-
     @DeleteMapping("/{reservationId}")
     public ResponseEntity<Void> deleteReservation(@PathVariable Long reservationId) {
         reservationService.deleteReservation(reservationId);
         return ResponseEntity.noContent().build();
     }
-
-//    @PostMapping("/send-reservation")
-//    public ResponseEntity sendReservation(@RequestBody DataReservation dataReservation) {
-//        try{
-//            ProtocolSendReservation protocolSendReservation = reservationService.sendReservation(dataReservation);
-//            return ResponseEntity.ok(protocolSendReservation);
-//        } catch (ErrorSendReservationQueueException e){
-//            return ResponseEntity.internalServerError().body(e.getMessage());
-//        }
-//    }
 
     @PostMapping
     public ResponseEntity<ReservationResponseDTO> createReservation(@RequestBody @Valid ReservationRequestDTO reservationDTO) {
@@ -68,14 +52,12 @@ public class ReservationController {
             // Send the message
             ProtocolSendReservation protocolSendReservation = reservationService.sendReservation(dataReservation);
 
-            // Return the answer with the sending protocol
+            // Returning the answer with the sending protocol
             return ResponseEntity.status(HttpStatus.CREATED).body(responseDTO);
         } catch (ErrorSendReservationQueueException e) {
-            // If the message fail, the reservation will be created successfully, but it will not be notificated
-//            return ResponseEntity.internalServerError().body("Reserva criada com sucesso, mas falha ao enviar notificação: " + e.getMessage());
+            // If the message fail the reservation will be created successfully, but it will not be notificated
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
-
 
 }

@@ -1,9 +1,9 @@
-package controller;
+package ntconsult.com.mscomparisonservice.controller;
 
-import model.Hotel;
+import ntconsult.com.mscomparisonservice.model.Hotel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import service.ComparisonService;
+import ntconsult.com.mscomparisonservice.service.ComparisonService;
 
 import java.util.List;
 
