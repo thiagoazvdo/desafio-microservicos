@@ -1,32 +1,21 @@
-package service;
+package com.ntconsult.msnotificationservice.service;
 
-import model.Notification;
-import model.ReservationDTO;
+import com.ntconsult.msnotificationservice.model.Reservation;
+import com.ntconsult.msnotificationservice.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.NotificationRepository;
 
-import static model.NotificationType.EMAIL;
+import java.util.List;
 
 @Service
 public class NotificationService {
 
     @Autowired
-    private NotificationRepository notificationRepository;
+    private ReservationRepository reservationRepository;
 
-    public Notification sendNotification(Notification notification) {
-        return notificationRepository.save(notification);
+    public List<Reservation> getAllReservations() {
+        return reservationRepository.findAll();
     }
 
-    public void notifyReservation(ReservationDTO reservation){
-        Notification notification = new Notification();
-        notification.setRecipient(reservation.getUserContact());
-        notification.setMessage("Your reservation was confirmed at the hotel " +
-                reservation.getHotelName() +
-                " from " + reservation.getCheckInDate() +
-                " to " + reservation.getCheckoutDate());
-        notification.setType(EMAIL);
 
-        sendNotification(notification);
-    }
 }

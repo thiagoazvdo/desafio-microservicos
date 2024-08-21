@@ -2,6 +2,12 @@ spring:
   application:
     name: ms-notification-service
 
+  rabbitmq: #-Configuracoes de conexao com broker
+    host: localhost
+    port: 5672
+    username: admin
+    password: 123456
+
   datasource: #-Configuracoes do Banco de Dados
     url: jdbc:mysql://localhost:3306/ms-notification?createDatabaseIfNotExist=true&serverTimezone=UTC
     username: root
@@ -14,7 +20,7 @@ spring:
     baselineOnMigrate: true #-Adiciona e habilita a tabela de controle de historico de versoes do BD
 
 server:
-  port: 0  #-Define a porta do Microservico como aleatoria
+  port: 8084
 
 eureka:
   instance: #-Definindo um nome unico para cada instancia (ms-reservation-service : nome-da-instancia)
@@ -23,3 +29,10 @@ eureka:
     register-with-eureka: true
     service-url:
       defaultZone: http://localhost:8761/eureka
+
+mq: #-Configuracoes de conexao com a fila
+  queue:
+    receive-reservation: receive-reservation
+
+
+
