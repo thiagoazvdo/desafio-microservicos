@@ -1,10 +1,78 @@
-version: '3.8'
-
 services:
+  eurekaserver:
+    build:
+      context: ./eurekaserver
+      dockerfile: Dockerfile
+    container_name: eurekaserver
+    restart: unless-stopped
+    ports:
+      - "8761:8761"
+    depends_on:
+      - rabbitmq
+
+  mscloudgateway:
+    build:
+      context: ./mscloudgateway
+      dockerfile: Dockerfile
+    container_name: gateway
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    depends_on:
+      - eurekaserver
+
+  hotel-service:
+    build:
+      context: ./ms-hotel-service
+      dockerfile: Dockerfile
+    container_name: hotel-service
+    restart: unless-stopped
+    ports:
+      - "8081:8081"
+    depends_on:
+      - eurekaserver
+      - rabbitmq
+
+  reservation-service:
+    build:
+      context: ./ms-reservation-service
+      dockerfile: Dockerfile
+    container_name: reservation-service
+    restart: unless-stopped
+    ports:
+      - "8083:8083"
+    depends_on:
+      - eurekaserver
+      - rabbitmq
+
+  comparison-service:
+    build:
+      context: ./ms-comparison-service
+      dockerfile: Dockerfile
+    container_name: comparison-service
+    restart: unless-stopped
+    ports:
+      - "8082:8082"
+    depends_on:
+      - eurekaserver
+      - rabbitmq
+
+  notification-service:
+    build:
+      context: ./ms-notification-service
+      dockerfile: Dockerfile
+    container_name: notification-service
+    restart: unless-stopped
+    ports:
+      - "8084:8084"
+    depends_on:
+      - eurekaserver
+      - rabbitmq
+
   rabbitmq:
     image: rabbitmq:3-management
     container_name: rabbitmq
-    restart: always
+    restart: unless-stopped
     ports:
       - "5672:5672"
       - "15672:15672"
@@ -13,3 +81,17 @@ services:
     environment:
       - RABBITMQ_DEFAULT_USER=admin
       - RABBITMQ_DEFAULT_PASS=123456
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ms-hotel
+      MYSQL_USER: root
+      MYSQL_PASSWORD: koatay108
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql-data:/var/lib/mysql
