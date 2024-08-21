@@ -4,6 +4,7 @@ Sistema de reserva de hotéis escalável.
 Sobre o desafio:
 
 Requisitos >
+
 1.Pesquisa de Hoteis: Os usuários devem poder pesquisar hoteis com base em critérios como destino, datas de check-in e check-out, número de quartos e número de hóspedes.
 
 2.Comparação de Opções: Os usuários devem poder comparar diferentes opções de hoteis com base em critérios como preço, localização, comodidades e avaliações de outros usuários.
@@ -14,6 +15,7 @@ Requisitos >
 
 
 Critérios de Avaliação > 
+
 1.Implementação completa e precisa dos requisitos funcionais e técnicos, junto de sua modelagem e diagrama.
 
 2.Eficiência e escalabilidade do sistema no gerenciamento de um grande volume de hoteis, reservas e notificações.
@@ -54,9 +56,14 @@ A maneira pensada inicialmente foi a seguinte: o usuário tem acesso os microser
 ![image](https://github.com/user-attachments/assets/4f683c35-85bf-4f02-ae78-f16d570d9309)
 
 Próximos passos:
+
 >Fechar o escopo e definir com mais clareza os requisitos de cada microserviço;
+
 >Implementar uma ferramenta de monitoramento de logs como o SLF4J;
+
 >Implementar segurança com o Keylock para gerenciamento identidade e acesso;
+
 >Desenvolver testes unitários para cada microserviço;
+
 >Conteinerizar a aplição (individualmente com dockerfiles e o todo com docker-compose);
 
