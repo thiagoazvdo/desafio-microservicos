@@ -2,12 +2,6 @@ spring:
   application:
     name: ms-hotel-service
 
-  rabbitmq: #-Configuracoes de conexao com broker
-    host: localhost
-    port: 5672
-    username: admin
-    password: 123456
-
   datasource: #-Configuracoes do Banco de Dados
     url: jdbc:mysql://localhost:3306/ms-hotel?createDatabaseIfNotExist=true&serverTimezone=UTC
     username: root
@@ -33,8 +27,8 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka
 
-mq: #-Configuracoes de conexao com a fila
-  queue:
-    recieve-reservation: recieve-reservation
+
+
+
 
 
