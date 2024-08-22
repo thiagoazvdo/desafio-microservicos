@@ -1,4 +1,4 @@
-# desafio-ntconsult
+# desafio
 Sistema de reserva de hotéis escalável. 
 
 Sobre o desafio:
@@ -66,4 +66,17 @@ Próximos passos:
 >Desenvolver testes unitários para cada microserviço;
 
 >Conteinerizar a aplição (individualmente com dockerfiles e o todo com docker-compose);
+
+------------------------------------------------------------------------------------------------------------------
+
+Diagrama UML para Microserviço de Pesquisa de Hotéis
+
+![image](https://github.com/user-attachments/assets/ec1714ca-a0f9-4dc0-bacf-f9e6a9187f8f)
+
+Diagrama UML para Microserviço de Comparação de Hotéis
+(em andamento...)
+
+Diagrama UML para Microserviço de Reserva de quartos de Hotéis
+(em andamento...)
+
 
